@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              colors: {
+                clifford: '#da373d',
+              },
+              rotate:{
+                'y-180':'rotateY(180)',
+              },
+            }
+          }
+        }
+      </script>
+      <style type="text/tailwindcss">
+          @layer utilities{
+            .perspective {
+                persepective: 100px;
+            }
+            .transform-style{
+                transform-style:preserve-3d;
+            }
+            .rotate-y-180{
+               transform:rotateY(180deg);
+            }
+          }
+          @layer components {
+            .designCard{
+              @apply p-4 bg-slate-200  rounded-tr-3xl rounded-bl-3xl rounded-tl-lg rounded-br-lg w-full h-[20vh] hover:bg-slate-500 hover:bg-opacity-50;
+            }
+            .buttonLose {
+              @apply bg-rose-600 hover:bg-rose-800;
+            }
+            .buttonWinner {
+              @apply bg-emerald-600 hover:bg-emerald-800;
+            }
+          }
+          
+      </style>
+</head>
+<body class="bg-gradient-to-r from-[#3494E6] to-[#EC6EAD]">
+    <div class="perspective container mx-auto w-full h-[100vh] text-white flex justify-center items-center flex-wrap">
+      <div>
+        <h1 class="w-full text-center font-bold italic text-6xl uppercase">Welcome to Memorize Game</h1>
+        <h2  class="text-center text-xl font-bold mt-10 text-slate-200 italic">Your Chance : <span id="chance"></span></h2>
+      </div>
+        <div class="grid grid-cols-4 shadow-2xl  rounded-xl w-full lg:w-[70%] xl:w-[50%] gap-4 p-5   bg-slate-50">
+        </div>
+    </div>
+
+
+    <!-- modal -->
+    <div id="popup-modal" tabindex="-1" class=" hidden overflow-y-auto bg-slate-700 bg-opacity-50 overflow-x-hidden fixed z-50 md:inset-0 h-modal md:h-full">
+      <div class="relative p-6 w-full max-w-4xl h-full md:h-auto z-50 left-[25rem] top-72">
+        <div class="relative h-full bg-white rounded-lg dark:bg-gray-700 shadow-2xl">
+          <button
+            type="button"
+            class="absolute buttonClose z-10 top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white"
+            data-modal-toggle="popup-modal"
+          >
+            <svg class="w-5 h-5 -z-10" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+              <path
+                fill-rule="evenodd"
+                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+          </button>
+          <div class="p-6 text-center">
+            <span class="flex w-full justify-center group"> </span>
+
+            <h3 class="my-10 text-lg selection:text-white text-gray-500 dark:text-gray-300 italic font-semibold" id="messageDone"></h3>
+            <button
+              data-modal-toggle="popup-modal"
+              type="button"
+              class="text-white  hover:scale-110 transition buttonClose focus:ring-4 focus:outline-none focus:ring-emerald-300 dark:focus:ring-emerald-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2"
+            >
+              Yes, I'm sure
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end modal -->
+    <script src="assets/JS/my.js"></script>
+</body>
+</html>
